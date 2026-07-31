@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fiona Reid Interiors
 
-## Getting Started
+A luxury interior design portfolio and enquiry site built with Next.js (App Router), TypeScript,
+Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
+cp .env.example .env.local   # then fill in real values
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Adding portfolio images
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All project data lives in [`src/lib/works.ts`](src/lib/works.ts). Each entry is a `Work` object:
 
-## Learn More
+```ts
+{
+  id: "belgravia-townhouse",
+  title: "Belgravia Townhouse",
+  location: "London, UK",
+  category: "residential", // "residential" | "commercial" | "hospitality"
+  coverImage: "/images/belgravia-cover.jpg",
+  images: ["/images/belgravia-1.jpg", "/images/belgravia-2.jpg"],
+  description: "...",
+  year: 2024,
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+Until real photography is supplied, `coverImage`/`images` point at Unsplash placeholder URLs.
+To swap in real photography:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Drop image files into `public/images/`.
+2. Update `coverImage` and `images` in `src/lib/works.ts` to reference `/images/your-file.jpg`.
+3. Remove the `images.unsplash.com` entry from `next.config.ts` once no Unsplash URLs remain.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Updating copy
 
-## Deploy on Vercel
+- **Home / About / Enquire pages** — edit the JSX directly in `src/app/{page}/page.tsx`. Body
+  copy is plain text/paragraphs, not sourced from a CMS.
+- **Logo** — replace `public/logo.svg` with the client-supplied wordmark/mark. It is rendered by
+  `src/components/ui/Logo.tsx`, which inverts to white on dark backgrounds via CSS `filter`.
+- **Colour palette / type scale** — defined once in `src/app/globals.css`. Do not introduce
+  additional colours outside the documented palette.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Variable | Purpose |
+|---|---|
+| `RESEND_API_KEY` | API key for [Resend](https://resend.com), used to send enquiry form emails |
+| `CONTACT_EMAIL` | Address that receives enquiry submissions |
+| `NEXT_PUBLIC_SITE_URL` | Public site URL (used for metadata) |
+
+Set these in `.env.local` for local development, and under **Vercel → Project → Settings →
+Environment Variables** for production/preview deployments.
+
+## Deployment
+
+The project auto-deploys via Vercel on push to `main`. Preview deployments are created for pull
+requests. See `vercel.json` and `.github/workflows/ci.yml` for build/CI configuration.
+
+## Scripts
+
+```bash
+npm run dev     # start dev server
+npm run build   # production build
+npm run start   # run production build locally
+npm run lint    # eslint
+```

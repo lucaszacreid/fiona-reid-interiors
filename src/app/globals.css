@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   Design tokens — the entire visual vocabulary of the site.
+   Do not introduce additional colours without noting the reason here.
+   ========================================================================== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --color-bg-primary: #faf9f8;
+  --color-bg-secondary: #f2f0eb;
+  --color-bg-dark: #1c1c1a;
+
+  /* Text */
+  --color-text-primary: #1c1c1a;
+  --color-text-secondary: #7a7870;
+  --color-text-inverse: #faf9f8;
+
+  /* Borders & separators */
+  --color-border: #d8d4cc;
+  --color-border-light: #ecead5;
+
+  /* Accent */
+  --color-accent: #b5a898;
+  --color-accent-dark: #8c7d6e;
+
+  /* Motion */
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body), sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+}
+
+:focus-visible {
+  outline: 1.5px solid var(--color-text-primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ==========================================================================
+   Layout helpers
+   ========================================================================== */
+@layer utilities {
+  .container-luxe {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: clamp(1.5rem, 5vw, 4rem);
+  }
+
+  .content-max {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  /* ------------------------------------------------------------------
+     Type scale — Cormorant Garamond for display, DM Sans for body.
+     ------------------------------------------------------------------ */
+  .text-hero-headline {
+    font-family: var(--font-display), serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 7vw, 7rem);
+    letter-spacing: 0.02em;
+    line-height: 1.05;
+  }
+
+  .text-page-title {
+    font-family: var(--font-display), serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 4rem);
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+  }
+
+  .text-section-heading {
+    font-family: var(--font-display), serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.75rem;
+    letter-spacing: 0.01em;
+  }
+
+  .text-nav-item {
+    font-family: var(--font-body), sans-serif;
+    font-weight: 300;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .text-body-copy {
+    font-family: var(--font-body), sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+  }
+
+  .text-caption-label {
+    font-family: var(--font-body), sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .divider-line {
+    border-top: 1px solid var(--color-border);
+  }
 }
