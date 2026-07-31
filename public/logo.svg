@@ -1,5 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 70" fill="none">
-  <!-- PLACEHOLDER LOGO — replace with client-supplied wordmark/mark -->
-  <text x="0" y="34" font-family="Georgia, 'Times New Roman', serif" font-size="32" letter-spacing="2" fill="#1C1C1A">FIONA REID</text>
-  <text x="0" y="58" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" letter-spacing="6" fill="#1C1C1A">INTERIORS</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" fill="none">
+  <!-- Fiona Reid Interiors monogram — recreated from client-supplied artwork -->
+  <g stroke="#C6A664" stroke-width="15" stroke-linecap="butt" stroke-linejoin="round" fill="none">
+    <!-- F -->
+    <path d="M22,18 L22,190" />
+    <path d="M22,18 L100,18" />
+    <path d="M22,100 L88,100" />
+    <!-- R -->
+    <path d="M120,190 L120,18" />
+    <path d="M120,18 C176,18 196,30 196,58 C196,86 176,100 120,100" />
+    <path d="M140,100 L206,190" />
+  </g>
+  <text
+    x="120"
+    y="258"
+    text-anchor="middle"
+    font-family="'Helvetica Neue', Arial, sans-serif"
+    font-size="26"
+    letter-spacing="9"
+    fill="#C6A664"
+  >INTERIORS</text>
 </svg>

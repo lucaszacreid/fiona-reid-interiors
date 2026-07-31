@@ -13,36 +13,34 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Adding portfolio images
+## Work is confidential — there's no project gallery
 
-All project data lives in [`src/lib/works.ts`](src/lib/works.ts). Each entry is a `Work` object:
+Most of the studio's work is undertaken under client confidentiality, so the site does not show
+a portfolio of named projects. Instead, `src/lib/services.ts` holds one entry per discipline
+(residential / commercial / hospitality) describing the *kind* of work undertaken:
 
 ```ts
 {
-  id: "belgravia-townhouse",
-  title: "Belgravia Townhouse",
-  location: "London, UK",
-  category: "residential", // "residential" | "commercial" | "hospitality"
-  coverImage: "/images/belgravia-cover.jpg",
-  images: ["/images/belgravia-1.jpg", "/images/belgravia-2.jpg"],
-  description: "...",
-  year: 2024,
+  slug: "residential",
+  title: "Residential",
+  summary: "Homes designed around how you actually live.",
+  description: ["...", "...", "..."],
+  image: "https://images.unsplash.com/...", // mood imagery, not a client photo
 }
 ```
 
-Until real photography is supplied, `coverImage`/`images` point at Unsplash placeholder URLs.
-To swap in real photography:
-
-1. Drop image files into `public/images/`.
-2. Update `coverImage` and `images` in `src/lib/works.ts` to reference `/images/your-file.jpg`.
-3. Remove the `images.unsplash.com` entry from `next.config.ts` once no Unsplash URLs remain.
+`src/app/work/page.tsx` and `src/app/work/[category]/page.tsx` both render from this file — edit
+the copy there to change what's shown. `image` is illustrative mood photography; swap it for a
+file in `public/images/` the same way as any other image, and remove the `images.unsplash.com`
+entry from `next.config.ts` once no Unsplash URLs remain anywhere in the site.
 
 ## Updating copy
 
 - **Home / About / Enquire pages** — edit the JSX directly in `src/app/{page}/page.tsx`. Body
   copy is plain text/paragraphs, not sourced from a CMS.
-- **Logo** — replace `public/logo.svg` with the client-supplied wordmark/mark. It is rendered by
-  `src/components/ui/Logo.tsx`, which inverts to white on dark backgrounds via CSS `filter`.
+- **Work / by-discipline copy** — edit `src/lib/services.ts` (see above).
+- **Logo** — replace `public/logo.svg` with the client-supplied wordmark/mark. It's rendered by
+  `src/components/ui/Logo.tsx` at a fixed brand colour (gold), sized via the `h-16 w-auto` class.
 - **Colour palette / type scale** — defined once in `src/app/globals.css`. Do not introduce
   additional colours outside the documented palette.
 

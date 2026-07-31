@@ -31,7 +31,6 @@ export default function Nav() {
   }, [isHome]);
 
   const transparent = isHome && overHero && !menuOpen;
-  const textColor = transparent ? "text-[var(--color-text-inverse)]" : "text-[var(--color-text-primary)]";
 
   return (
     <>
@@ -46,7 +45,7 @@ export default function Nav() {
         <div className="container-luxe relative flex items-center justify-between py-6">
           <div className={isHome ? "md:absolute md:left-1/2 md:top-20 md:-translate-x-1/2" : ""}>
             <Link href="/" aria-label="Fiona Reid Interiors — home">
-              <Logo variant={transparent ? "light" : "dark"} priority />
+              <Logo priority />
             </Link>
           </div>
 
@@ -57,7 +56,7 @@ export default function Nav() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-nav-item group relative pb-1 ${textColor}`}
+                  className="text-nav-item group relative pb-1 text-[var(--color-text-primary)]"
                 >
                   {link.label}
                   <span
@@ -79,13 +78,13 @@ export default function Nav() {
             className="relative z-[70] flex h-5 w-5 flex-col items-center justify-center gap-[5px] md:hidden"
           >
             <span
-              className={`block h-[2px] w-5 ${transparent && !menuOpen ? "bg-[var(--color-text-inverse)]" : "bg-[var(--color-text-primary)]"} transition-transform duration-300 ${
-                menuOpen ? "translate-y-[3.5px] rotate-45 bg-[var(--color-text-inverse)]" : ""
+              className={`block h-[2px] w-5 bg-[var(--color-text-primary)] transition-transform duration-300 ${
+                menuOpen ? "translate-y-[3.5px] rotate-45" : ""
               }`}
             />
             <span
-              className={`block h-[2px] w-5 ${transparent && !menuOpen ? "bg-[var(--color-text-inverse)]" : "bg-[var(--color-text-primary)]"} transition-transform duration-300 ${
-                menuOpen ? "-translate-y-[3.5px] -rotate-45 bg-[var(--color-text-inverse)]" : ""
+              className={`block h-[2px] w-5 bg-[var(--color-text-primary)] transition-transform duration-300 ${
+                menuOpen ? "-translate-y-[3.5px] -rotate-45" : ""
               }`}
             />
           </button>
@@ -112,7 +111,7 @@ export default function Nav() {
                   <Link
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="text-page-title text-[var(--color-text-inverse)]"
+                    className="text-page-title text-[var(--color-text-primary)]"
                   >
                     {link.label}
                   </Link>

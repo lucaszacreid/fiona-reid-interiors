@@ -1,27 +1,61 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CategoryFilter from "@/components/sections/CategoryFilter";
-import PortfolioGrid from "@/components/sections/PortfolioGrid";
+import ImageReveal from "@/components/ui/ImageReveal";
 import RevealSection from "@/components/ui/RevealSection";
-import { works } from "@/lib/works";
+import { privacyStatement, serviceCategories } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Work — Fiona Reid Interiors",
-  description: "A selection of residential, commercial, and hospitality projects.",
+  description: "The kind of residential, commercial, and hospitality work the studio undertakes.",
 };
 
 export default function WorkPage() {
   return (
     <div className="pt-32">
       <section className="container-luxe pb-12 md:pb-16">
-        <RevealSection>
-          <p className="text-caption-label mb-4 text-[var(--color-text-secondary)]">Portfolio</p>
-          <h1 className="text-page-title mb-10">Selected Work</h1>
+        <RevealSection className="max-w-2xl">
+          <p className="text-caption-label mb-4 text-[var(--color-text-secondary)]">Work</p>
+          <h1 className="text-page-title mb-8">By discipline, not by gallery.</h1>
+          <p className="text-body-copy text-[var(--color-text-secondary)]">{privacyStatement}</p>
         </RevealSection>
-        <CategoryFilter />
+        <div className="mt-12">
+          <CategoryFilter />
+        </div>
       </section>
 
-      <section className="container-luxe pb-24 md:pb-32">
-        <PortfolioGrid works={works} />
+      <section className="container-luxe flex flex-col gap-20 pb-24 md:gap-28 md:pb-32">
+        {serviceCategories.map((service, i) => (
+          <RevealSection
+            key={service.slug}
+            className={`grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-16 ${
+              i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+            }`}
+          >
+            <ImageReveal
+              src={service.image}
+              alt={`${service.title} interiors`}
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="aspect-4/3 w-full"
+            />
+            <div className="flex flex-col gap-5">
+              <p className="text-caption-label text-[var(--color-text-secondary)]">
+                {String(i + 1).padStart(2, "0")}
+              </p>
+              <h2 className="text-section-heading">{service.title}</h2>
+              <p className="text-body-copy text-[var(--color-text-secondary)]">
+                {service.description[0]}
+              </p>
+              <Link href={`/work/${service.slug}`} className="text-caption-label group relative w-fit">
+                Explore {service.title}
+                <span
+                  aria-hidden
+                  className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-current transition-transform duration-500 ease-[var(--ease-luxe)] group-hover:scale-x-100"
+                />
+              </Link>
+            </div>
+          </RevealSection>
+        ))}
       </section>
     </div>
   );

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CategoryFilter from "@/components/sections/CategoryFilter";
-import PortfolioGrid from "@/components/sections/PortfolioGrid";
+import Button from "@/components/ui/Button";
+import ImageReveal from "@/components/ui/ImageReveal";
 import RevealSection from "@/components/ui/RevealSection";
-import { works, categories, type Category } from "@/lib/works";
+import { serviceCategories, categories, type Category } from "@/lib/services";
 
 type WorkCategory = Exclude<Category, "all">;
 
@@ -19,10 +20,11 @@ export async function generateMetadata({
   params: Promise<{ category: string }>;
 }): Promise<Metadata> {
   const { category } = await params;
-  const label = category.charAt(0).toUpperCase() + category.slice(1);
+  const service = serviceCategories.find((s) => s.slug === category);
+  if (!service) return {};
   return {
-    title: `${label} — Fiona Reid Interiors`,
-    description: `${label} interior design projects by Fiona Reid Interiors.`,
+    title: `${service.title} — Fiona Reid Interiors`,
+    description: service.summary,
   };
 }
 
@@ -32,25 +34,43 @@ export default async function CategoryPage({
   params: Promise<{ category: string }>;
 }) {
   const { category } = await params;
+  const service = serviceCategories.find((s) => s.slug === category);
 
-  if (!validCategories.includes(category as WorkCategory)) {
+  if (!service) {
     notFound();
   }
-
-  const filtered = works.filter((w) => w.category === category);
 
   return (
     <div className="pt-32">
       <section className="container-luxe pb-12 md:pb-16">
-        <RevealSection>
-          <p className="text-caption-label mb-4 text-[var(--color-text-secondary)]">Portfolio</p>
-          <h1 className="text-page-title mb-10 capitalize">{category}</h1>
+        <RevealSection className="max-w-2xl">
+          <p className="text-caption-label mb-4 text-[var(--color-text-secondary)]">Work</p>
+          <h1 className="text-page-title mb-6">{service.title}</h1>
+          <p className="text-body-copy text-[var(--color-text-secondary)]">{service.summary}</p>
         </RevealSection>
-        <CategoryFilter />
+        <div className="mt-12">
+          <CategoryFilter />
+        </div>
       </section>
 
-      <section className="container-luxe pb-24 md:pb-32">
-        <PortfolioGrid works={filtered} />
+      <ImageReveal
+        src={service.image}
+        alt={`${service.title} interiors`}
+        sizes="100vw"
+        className="h-[50vh] w-full md:h-[65vh]"
+      />
+
+      <section className="container-luxe py-24 md:py-32">
+        <RevealSection className="content-max mx-auto flex max-w-2xl flex-col gap-6">
+          {service.description.map((paragraph) => (
+            <p key={paragraph} className="text-body-copy text-[var(--color-text-secondary)]">
+              {paragraph}
+            </p>
+          ))}
+          <div className="mt-4">
+            <Button href="/enquire">Begin a Conversation</Button>
+          </div>
+        </RevealSection>
       </section>
     </div>
   );

@@ -11,11 +11,11 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-[var(--color-bg-dark)] text-[var(--color-text-inverse)]">
+    <footer className="bg-[var(--color-bg-dark)] text-[var(--color-text-primary)]">
       <div className="container-luxe grid grid-cols-1 gap-12 py-20 md:grid-cols-3">
         <div className="flex flex-col gap-6">
-          <Logo variant="light" />
-          <p className="text-section-heading text-[var(--color-text-inverse)]">
+          <Logo />
+          <p className="text-section-heading text-[var(--color-text-primary)]">
             Designing spaces that feel like you.
           </p>
         </div>

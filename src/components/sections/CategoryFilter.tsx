@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { categories } from "@/lib/works";
+import { categories } from "@/lib/services";
 
 export default function CategoryFilter() {
   const pathname = usePathname();

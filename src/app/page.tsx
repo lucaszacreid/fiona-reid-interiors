@@ -1,13 +1,10 @@
 import Hero from "@/components/sections/Hero";
 import ServicesList from "@/components/sections/ServicesList";
 import RevealSection from "@/components/ui/RevealSection";
-import ImageReveal from "@/components/ui/ImageReveal";
 import Button from "@/components/ui/Button";
-import { works } from "@/lib/works";
+import { privacyStatement } from "@/lib/services";
 
 export default function Home() {
-  const featured = works.slice(0, 3);
-
   return (
     <>
       <Hero
@@ -15,43 +12,15 @@ export default function Home() {
         tagline="Interiors considered, unhurried, and entirely your own."
       />
 
-      <section className="container-luxe py-24 md:py-32">
-        <RevealSection className="mb-12 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-caption-label mb-4 text-[var(--color-text-secondary)]">
-              Selected Work
-            </p>
-            <h2 className="text-page-title">Recent projects.</h2>
-          </div>
-          <Button href="/work">View Work</Button>
+      <section className="container-luxe py-24 text-center md:py-32">
+        <RevealSection className="content-max mx-auto flex max-w-2xl flex-col items-center gap-8">
+          <p className="text-caption-label text-[var(--color-text-secondary)]">
+            By Invitation
+          </p>
+          <h2 className="text-page-title">Held in confidence.</h2>
+          <p className="text-body-copy text-[var(--color-text-secondary)]">{privacyStatement}</p>
+          <Button href="/work">Our Approach</Button>
         </RevealSection>
-
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
-          <div className="md:row-span-2">
-            <ImageReveal
-              src={featured[0].coverImage}
-              alt={featured[0].title}
-              sizes="(min-width: 768px) 33vw, 100vw"
-              className="aspect-3/4 w-full"
-            />
-          </div>
-          <div className="md:col-span-2">
-            <ImageReveal
-              src={featured[1].coverImage}
-              alt={featured[1].title}
-              sizes="(min-width: 768px) 66vw, 100vw"
-              className="aspect-16/9 w-full"
-            />
-          </div>
-          <div className="md:col-span-2">
-            <ImageReveal
-              src={featured[2].coverImage}
-              alt={featured[2].title}
-              sizes="(min-width: 768px) 66vw, 100vw"
-              className="aspect-16/9 w-full"
-            />
-          </div>
-        </div>
       </section>
 
       <section className="bg-[var(--color-bg-secondary)] py-24 md:py-32">
