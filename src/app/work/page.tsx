@@ -28,22 +28,20 @@ export default function WorkPage() {
         {serviceCategories.map((service, i) => (
           <RevealSection
             key={service.slug}
-            className={`grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-16 ${
-              i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
-            }`}
+            className="flex flex-col gap-8 md:flex-row md:items-start md:gap-16"
           >
-            <div
-              className="w-full"
-              style={{ aspectRatio: `${service.imageWidth} / ${service.imageHeight}` }}
-            >
+            <div className="w-full shrink-0" style={{ maxWidth: service.imageWidth }}>
               <ImageReveal
                 src={service.image}
                 alt={`${service.title} interiors`}
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="h-full w-full"
+                fill={false}
+                width={service.imageWidth}
+                height={service.imageHeight}
+                sizes={`(min-width: 768px) ${service.imageWidth}px, 100vw`}
+                className="h-auto w-full"
               />
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 md:pt-4">
               <p className="text-caption-label text-[var(--color-text-secondary)]">
                 {String(i + 1).padStart(2, "0")}
               </p>

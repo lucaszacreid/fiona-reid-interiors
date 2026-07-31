@@ -53,22 +53,19 @@ export default async function CategoryPage({
         </div>
       </section>
 
-      <div className="container-luxe">
-        <div
-          className="mx-auto w-full max-w-2xl"
-          style={{ aspectRatio: `${service.imageWidth} / ${service.imageHeight}` }}
-        >
+      <section className="container-luxe flex flex-col gap-12 pb-24 md:flex-row md:items-start md:gap-16 md:pb-32">
+        <div className="w-full shrink-0" style={{ maxWidth: service.imageWidth }}>
           <ImageReveal
             src={service.image}
             alt={`${service.title} interiors`}
-            sizes="(min-width: 768px) 42rem, 100vw"
-            className="h-full w-full"
+            fill={false}
+            width={service.imageWidth}
+            height={service.imageHeight}
+            sizes={`(min-width: 768px) ${service.imageWidth}px, 100vw`}
           />
         </div>
-      </div>
 
-      <section className="container-luxe py-24 md:py-32">
-        <RevealSection className="content-max mx-auto flex max-w-2xl flex-col gap-6">
+        <RevealSection className="flex flex-col gap-6 md:pt-4">
           {service.description.map((paragraph) => (
             <p key={paragraph} className="text-body-copy text-[var(--color-text-secondary)]">
               {paragraph}
