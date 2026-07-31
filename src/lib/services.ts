@@ -4,14 +4,10 @@ export interface ServiceCategory {
   summary: string;
   description: string[];
   image: string;
+  /** Image's real pixel dimensions, so it renders at its native aspect ratio. */
+  imageWidth: number;
+  imageHeight: number;
 }
-
-/**
- * PLACEHOLDER IMAGERY — Unsplash mood shots stand in for the studio's own
- * photography. These are illustrative of the kind of space each discipline
- * covers, not photographs of specific client projects.
- */
-const unsplash = (id: string) => `https://images.unsplash.com/${id}?w=1600&q=80`;
 
 export const privacyStatement =
   "The great majority of our work is undertaken under strict client confidentiality — private residences, members' spaces, and boutique hospitality projects that are rarely published or attributed. Rather than a gallery of past projects, what follows is an outline of the work we undertake within each discipline.";
@@ -27,6 +23,8 @@ export const serviceCategories: ServiceCategory[] = [
       "Engagements are typically long-term and highly discreet, often running from first sketch through to the placement of the final object.",
     ],
     image: "/images/residential-hero.jpg",
+    imageWidth: 735,
+    imageHeight: 991,
   },
   {
     slug: "commercial",
@@ -38,6 +36,8 @@ export const serviceCategories: ServiceCategory[] = [
       "Most commercial commissions are delivered under NDA on behalf of private companies and individuals, and are not published.",
     ],
     image: "/images/commercial-hero.jpg",
+    imageWidth: 736,
+    imageHeight: 920,
   },
   {
     slug: "hospitality",
@@ -48,7 +48,9 @@ export const serviceCategories: ServiceCategory[] = [
       "The brief is nearly always the same: a room that slows people down. Tactile fabrics, soft light, and a material palette that ages well under daily use.",
       "Given the sensitivities of ownership and brand, hospitality projects are rarely named publicly.",
     ],
-    image: unsplash("photo-1600607687939-ce8a6c25118c"),
+    image: "/images/hospitality-hero.jpg",
+    imageWidth: 735,
+    imageHeight: 985,
   },
 ];
 

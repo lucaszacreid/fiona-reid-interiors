@@ -23,7 +23,8 @@ export default function CategoryHeroes() {
         >
           <Link
             href={`/work/${service.slug}`}
-            className="group relative block h-[60vh] w-full overflow-hidden md:h-[70vh]"
+            className="group relative block w-full overflow-hidden"
+            style={{ aspectRatio: `${service.imageWidth} / ${service.imageHeight}` }}
           >
             <Image
               src={service.image}

@@ -32,12 +32,17 @@ export default function WorkPage() {
               i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
             }`}
           >
-            <ImageReveal
-              src={service.image}
-              alt={`${service.title} interiors`}
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="aspect-4/3 w-full"
-            />
+            <div
+              className="w-full"
+              style={{ aspectRatio: `${service.imageWidth} / ${service.imageHeight}` }}
+            >
+              <ImageReveal
+                src={service.image}
+                alt={`${service.title} interiors`}
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="h-full w-full"
+              />
+            </div>
             <div className="flex flex-col gap-5">
               <p className="text-caption-label text-[var(--color-text-secondary)]">
                 {String(i + 1).padStart(2, "0")}

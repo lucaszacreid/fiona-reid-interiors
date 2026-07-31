@@ -53,12 +53,19 @@ export default async function CategoryPage({
         </div>
       </section>
 
-      <ImageReveal
-        src={service.image}
-        alt={`${service.title} interiors`}
-        sizes="100vw"
-        className="h-[50vh] w-full md:h-[65vh]"
-      />
+      <div className="container-luxe">
+        <div
+          className="mx-auto w-full max-w-2xl"
+          style={{ aspectRatio: `${service.imageWidth} / ${service.imageHeight}` }}
+        >
+          <ImageReveal
+            src={service.image}
+            alt={`${service.title} interiors`}
+            sizes="(min-width: 768px) 42rem, 100vw"
+            className="h-full w-full"
+          />
+        </div>
+      </div>
 
       <section className="container-luxe py-24 md:py-32">
         <RevealSection className="content-max mx-auto flex max-w-2xl flex-col gap-6">
