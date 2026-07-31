@@ -6,8 +6,12 @@ import RevealSection from "@/components/ui/RevealSection";
 import { privacyStatement, serviceCategories } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "Work — Fiona Reid Interiors",
-  description: "The kind of residential, commercial, and hospitality work the studio undertakes.",
+  title: "Our Work",
+  description:
+    "Residential, commercial, and hospitality interior design by a Glasgow-based studio — see the kind of work we undertake within each discipline.",
+  alternates: {
+    canonical: "/work",
+  },
 };
 
 export default function WorkPage() {

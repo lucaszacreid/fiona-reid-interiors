@@ -23,8 +23,11 @@ export async function generateMetadata({
   const service = serviceCategories.find((s) => s.slug === category);
   if (!service) return {};
   return {
-    title: `${service.title} — Fiona Reid Interiors`,
-    description: service.summary,
+    title: `${service.title} Interior Design`,
+    description: `${service.summary} Glasgow-based ${service.title.toLowerCase()} interior design across Scotland and the UK.`,
+    alternates: {
+      canonical: `/work/${service.slug}`,
+    },
   };
 }
 

@@ -3,8 +3,12 @@ import EnquiryForm from "@/components/sections/EnquiryForm";
 import RevealSection from "@/components/ui/RevealSection";
 
 export const metadata: Metadata = {
-  title: "Enquire — Fiona Reid Interiors",
-  description: "Begin a conversation about your next project.",
+  title: "Enquire",
+  description:
+    "Get in touch with Fiona Reid Interiors, Glasgow. Begin a conversation about your residential, commercial, or hospitality project.",
+  alternates: {
+    canonical: "/enquire",
+  },
 };
 
 export default function EnquirePage() {

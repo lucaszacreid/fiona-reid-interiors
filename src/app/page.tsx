@@ -1,8 +1,18 @@
+import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import CategoryHeroes from "@/components/sections/CategoryHeroes";
 import RevealSection from "@/components/ui/RevealSection";
 import Button from "@/components/ui/Button";
 import { privacyStatement } from "@/lib/services";
+
+export const metadata: Metadata = {
+  title: "Fiona Reid Interiors — Interior Designer in Glasgow",
+  description:
+    "Fiona Reid Interiors is a Glasgow-based interior design studio working on private residential, commercial, and hospitality projects across Scotland and the UK.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (

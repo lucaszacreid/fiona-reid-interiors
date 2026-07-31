@@ -19,7 +19,7 @@ export default function Hero({ image, tagline }: HeroProps) {
     >
       <Image
         src={image}
-        alt="Fiona Reid Interiors — featured project"
+        alt="Interior design by Fiona Reid Interiors, Glasgow"
         fill
         priority
         sizes="100vw"
@@ -36,14 +36,14 @@ export default function Hero({ image, tagline }: HeroProps) {
       />
 
       {tagline && (
-        <motion.p
+        <motion.h1
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: prefersReduced ? 0 : 1, delay: 0.6, ease: EASE_LUXE }}
           className="text-section-heading absolute bottom-24 left-1/2 w-full max-w-xl -translate-x-1/2 px-6 text-center text-[var(--color-text-primary)]"
         >
           {tagline}
-        </motion.p>
+        </motion.h1>
       )}
 
       <motion.div

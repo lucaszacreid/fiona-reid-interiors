@@ -3,8 +3,12 @@ import ImageReveal from "@/components/ui/ImageReveal";
 import RevealSection from "@/components/ui/RevealSection";
 
 export const metadata: Metadata = {
-  title: "About — Fiona Reid Interiors",
-  description: "The studio's philosophy, approach, and process.",
+  title: "About",
+  description:
+    "Meet Fiona Reid Interiors, a Glasgow-based interior design studio. Our philosophy, approach, and process for residential, commercial, and hospitality projects.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const steps = [
@@ -44,19 +48,18 @@ export default function AboutPage() {
 
           <div className="text-body-copy flex flex-col gap-5 text-[var(--color-text-secondary)]">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fiona founded the studio on
-              a simple belief: that a home should feel considered, never contrived — a place that
-              reveals itself slowly rather than announcing itself all at once.
+              Fiona founded the studio on a simple belief: that a home should feel considered,
+              never contrived — a place that reveals itself slowly rather than announcing itself
+              all at once.
             </p>
             <p>
-              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Every project
-              begins with the client, not a mood board — their habits, their collections, the way
-              light moves through their rooms across a day.
+              Every project begins with the client, not a mood board — their habits, their
+              collections, the way light moves through their rooms across a day.
             </p>
             <p>
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. The studio works
-              across residential, commercial, and hospitality projects throughout the UK, with a
-              small team involved from first sketch to final placement.
+              Based in Glasgow, the studio takes on residential, commercial, and hospitality
+              projects across Scotland and further afield throughout the UK, with a small team
+              involved from first sketch to final placement.
             </p>
           </div>
         </RevealSection>
