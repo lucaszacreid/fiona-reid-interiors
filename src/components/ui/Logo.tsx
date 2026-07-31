@@ -7,16 +7,16 @@ interface LogoProps {
 }
 
 export default function Logo({ variant = "dark", priority = false, className = "" }: LogoProps) {
-  // The mark is a single brand taupe (#B5A898) that reads on both light and
-  // dark grounds, so `variant` no longer swaps colour — it's kept in the API
-  // in case a future asset needs it.
+  // The client-supplied mark is a single brand gold that reads on both light
+  // and dark grounds, so `variant` no longer swaps colour — it's kept in the
+  // API in case a future asset needs it.
   void variant;
   return (
     <Image
-      src="/logo.svg"
+      src="/logo.png"
       alt="Fiona Reid Interiors"
-      width={240}
-      height={300}
+      width={446}
+      height={438}
       priority={priority}
       className={`h-16 w-auto ${className}`}
     />

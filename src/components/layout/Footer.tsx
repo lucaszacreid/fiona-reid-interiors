@@ -30,7 +30,7 @@ export default function Footer() {
 
         <div className="flex flex-col gap-4 md:items-end">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/fionareidinteriors"
             target="_blank"
             rel="noopener noreferrer"
             className="text-caption-label"

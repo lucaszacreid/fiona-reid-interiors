@@ -26,7 +26,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Every commission begins with how a household actually lives — the way light moves through a room across a day, the objects worth building a space around, the habits a home needs to accommodate. Nothing is templated.",
       "Engagements are typically long-term and highly discreet, often running from first sketch through to the placement of the final object.",
     ],
-    image: unsplash("photo-1618221195710-dd6b41faaea6"),
+    image: "/images/residential-hero.jpg",
   },
   {
     slug: "commercial",
@@ -37,7 +37,7 @@ export const serviceCategories: ServiceCategory[] = [
       "We work closely with owners and operators who want a commercial space to feel considered rather than corporate — warm materials, low light, and an absence of clutter.",
       "Most commercial commissions are delivered under NDA on behalf of private companies and individuals, and are not published.",
     ],
-    image: unsplash("photo-1600566753086-00f18fb6b3ea"),
+    image: "/images/commercial-hero.jpg",
   },
   {
     slug: "hospitality",

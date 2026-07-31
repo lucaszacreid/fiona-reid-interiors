@@ -1,5 +1,5 @@
 import Hero from "@/components/sections/Hero";
-import ServicesList from "@/components/sections/ServicesList";
+import CategoryHeroes from "@/components/sections/CategoryHeroes";
 import RevealSection from "@/components/ui/RevealSection";
 import Button from "@/components/ui/Button";
 import { privacyStatement } from "@/lib/services";
@@ -29,10 +29,10 @@ export default function Home() {
             <p className="text-caption-label mb-4 text-[var(--color-text-secondary)]">
               What We Do
             </p>
-            <h2 className="text-page-title">By category.</h2>
+            <h2 className="text-page-title">Residential &amp; commercial.</h2>
           </RevealSection>
-          <ServicesList />
         </div>
+        <CategoryHeroes />
       </section>
 
       <section className="container-luxe py-24 text-center md:py-32">
