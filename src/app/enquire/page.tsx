@@ -20,12 +20,16 @@ export default function EnquirePage() {
           conversation.
         </p>
         <div className="text-body-copy flex flex-col gap-1 text-[var(--color-text-secondary)]">
-          <a href="mailto:hello@fionareidinteriors.co.uk" className="hover:text-[var(--color-text-primary)]">
-            hello@fionareidinteriors.co.uk
+          <a
+            href="mailto:info@fionareidinteriors.co.uk"
+            className="hover:text-[var(--color-text-primary)]"
+          >
+            info@fionareidinteriors.co.uk
           </a>
-          <a href="tel:+441234567890" className="hover:text-[var(--color-text-primary)]">
-            +44 (0)1234 567 890
+          <a href="tel:+447835708435" className="hover:text-[var(--color-text-primary)]">
+            +44 7835 708435
           </a>
+          <p>37 Otago Street, Glasgow, G12 8JJ</p>
         </div>
       </RevealSection>
 

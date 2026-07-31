@@ -43,11 +43,9 @@ export default function Nav() {
         }`}
       >
         <div className="container-luxe relative flex items-center justify-between py-6">
-          <div className={isHome ? "md:absolute md:left-1/2 md:top-20 md:-translate-x-1/2" : ""}>
-            <Link href="/" aria-label="Fiona Reid Interiors — home">
-              <Logo priority />
-            </Link>
-          </div>
+          <Link href="/" aria-label="Fiona Reid Interiors — home">
+            <Logo priority size={38} />
+          </Link>
 
           <nav className="hidden items-center gap-10 md:flex">
             {links.map((link) => {
