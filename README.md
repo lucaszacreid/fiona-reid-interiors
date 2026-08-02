@@ -17,7 +17,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Route | Purpose |
 |---|---|
-| `/` | Homepage — hero, studio positioning, disciplines, services summary, locations, CTA |
+| `/` | Homepage — hero, trust pillars, confidentiality note, recent work, process, services, locations, 3-pathway CTA |
 | `/interior-designer-glasgow` | Glasgow location landing page (primary SEO/Ads target) |
 | `/interior-designer-london` | London location landing page, same template as Glasgow |
 | `/services` | The four services on offer, with pricing where confirmed |
@@ -93,6 +93,7 @@ Paste real values into `.env.local` (and Vercel → Project → Settings → Env
 | `NEXT_PUBLIC_GA4_ID` | GA4 Measurement ID, e.g. `G-XXXXXXXXXX` |
 | `NEXT_PUBLIC_ADS_CONVERSION_ID` | Google Ads conversion ID, e.g. `AW-XXXXXXXXX` |
 | `NEXT_PUBLIC_ADS_CONVERSION_LABEL` | Google Ads conversion label |
+| `NEXT_PUBLIC_HOTJAR_ID` | Hotjar Site ID (numeric) |
 
 The Ads conversion event itself fires from `src/components/sections/ThankYouContent.tsx` — there's
 a commented-out `gtag('event', 'conversion', ...)` line ready to uncomment once you have the
@@ -106,13 +107,20 @@ and no banner-related errors.
 | `RESEND_API_KEY` | API key for [Resend](https://resend.com), used to send enquiry form emails |
 | `CONTACT_EMAIL` | Address that receives enquiry submissions |
 | `NEXT_PUBLIC_SITE_URL` | Public site URL (used for metadata, sitemap, JSON-LD) |
-| `NEXT_PUBLIC_GA4_ID` / `NEXT_PUBLIC_ADS_CONVERSION_ID` / `NEXT_PUBLIC_ADS_CONVERSION_LABEL` | See above |
+| `NEXT_PUBLIC_GA4_ID` / `NEXT_PUBLIC_ADS_CONVERSION_ID` / `NEXT_PUBLIC_ADS_CONVERSION_LABEL` / `NEXT_PUBLIC_HOTJAR_ID` | See above |
 
 ## Outstanding TODOs (only Fiona can provide these)
 
 - [ ] **Exact pricing** for the Online Design Consultation and any other service — currently shows
   "Price on enquiry" everywhere rather than an unconfirmed figure.
-- [ ] **Real Google tracking IDs** — see "Cookie consent & tracking IDs" above.
+- [ ] **Real Google/Hotjar tracking IDs** — see "Cookie consent & tracking IDs" above.
+- [ ] **Testimonials** — the homepage intentionally has no testimonials section yet. Only add one
+  with genuine client quotes (name + project description they're comfortable with); don't
+  fabricate placeholder quotes. Once 2-3 are available, add a section between "Recent Work" and
+  "How We Work" in `src/app/page.tsx`.
+- [ ] **"Schedule a Call" booking link** — the homepage CTA currently routes to `/enquire` like
+  every other CTA. If Fiona sets up Calendly (or similar), swap the `href` for that pathway card
+  in `src/app/page.tsx` (`ctaPathways[0].href`) for the booking URL.
 - [ ] **"As featured in" publications** — not yet built (no content exists for it). If there's a
   list of press mentions, send them over and it's a quick addition to the homepage.
 - [ ] **Real landing-page hero photo** — the homepage hero still uses an Unsplash placeholder;

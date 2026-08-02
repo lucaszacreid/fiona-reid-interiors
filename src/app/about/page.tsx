@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ImageReveal from "@/components/ui/ImageReveal";
 import RevealSection from "@/components/ui/RevealSection";
+import ProcessSteps from "@/components/sections/ProcessSteps";
 import { breadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 const breadcrumbs = breadcrumbJsonLd([
@@ -16,27 +17,6 @@ export const metadata: Metadata = {
     canonical: "/about",
   },
 };
-
-const steps = [
-  {
-    number: "01",
-    title: "Discovery",
-    description:
-      "We begin with how you actually live. Conversations, site visits, and a brief that reflects your rhythm, not a template.",
-  },
-  {
-    number: "02",
-    title: "Design",
-    description:
-      "Concepts, material palettes, and drawings developed in close collaboration — refined until every detail earns its place.",
-  },
-  {
-    number: "03",
-    title: "Realisation",
-    description:
-      "On-site delivery managed closely with trusted makers and contractors, so the finished space matches the drawing.",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -90,19 +70,7 @@ export default function AboutPage() {
           <h2 className="text-section-heading">The Process</h2>
         </RevealSection>
 
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-10">
-          {steps.map((step) => (
-            <RevealSection key={step.number} className="flex flex-col gap-4">
-              <span className="text-hero-headline text-[var(--color-border)]" style={{ fontSize: "3.5rem" }}>
-                {step.number}
-              </span>
-              <h3 className="text-section-heading">{step.title}</h3>
-              <p className="text-body-copy text-[var(--color-text-secondary)]">
-                {step.description}
-              </p>
-            </RevealSection>
-          ))}
-        </div>
+        <ProcessSteps />
       </section>
 
       <ImageReveal
