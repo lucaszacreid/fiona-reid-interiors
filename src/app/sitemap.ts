@@ -1,10 +1,19 @@
 import type { MetadataRoute } from "next";
 import { categories } from "@/lib/services";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://fiona-reid-interiors.vercel.app";
+import { journalPosts } from "@/lib/journal";
+import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/about", "/work", "/enquire"].map((path) => ({
+  const staticRoutes = [
+    "",
+    "/about",
+    "/work",
+    "/services",
+    "/interior-designer-glasgow",
+    "/interior-designer-london",
+    "/journal",
+    "/enquire",
+  ].map((path) => ({
     url: `${siteUrl}${path}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
@@ -20,5 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     }));
 
-  return [...staticRoutes, ...categoryRoutes];
+  const journalRoutes = journalPosts.map((post) => ({
+    url: `${siteUrl}/journal/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...categoryRoutes, ...journalRoutes];
 }

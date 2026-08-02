@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import EnquiryForm from "@/components/sections/EnquiryForm";
 import RevealSection from "@/components/ui/RevealSection";
+import { business } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Enquire",
@@ -24,16 +25,13 @@ export default function EnquirePage() {
           conversation.
         </p>
         <div className="text-body-copy flex flex-col gap-1 text-[var(--color-text-secondary)]">
-          <a
-            href="mailto:info@fionareidinteriors.co.uk"
-            className="hover:text-[var(--color-text-primary)]"
-          >
-            info@fionareidinteriors.co.uk
+          <a href={`mailto:${business.email}`} className="hover:text-[var(--color-text-primary)]">
+            {business.email}
           </a>
-          <a href="tel:+447835708435" className="hover:text-[var(--color-text-primary)]">
-            +44 7835 708435
+          <a href={`tel:${business.telephone}`} className="hover:text-[var(--color-text-primary)]">
+            {business.telephoneDisplay}
           </a>
-          <p>37 Otago Street, Glasgow, G12 8JJ</p>
+          <p>{business.addressDisplay}</p>
         </div>
       </RevealSection>
 

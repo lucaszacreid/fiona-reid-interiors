@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import ImageReveal from "@/components/ui/ImageReveal";
 import RevealSection from "@/components/ui/RevealSection";
+import { breadcrumbJsonLd } from "@/lib/breadcrumbs";
+
+const breadcrumbs = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+]);
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Fiona Reid",
   description:
-    "Meet Fiona Reid Interiors, a Glasgow-based interior design studio. Our philosophy, approach, and process for residential, commercial, and hospitality projects.",
+    "Fiona Reid is a Glasgow-based interior designer and mother of five whose career has taken her across the world — from learning the craft on site to leading interiors on homes worth over £90 million in Mayfair and across Europe.",
   alternates: {
     canonical: "/about",
   },
@@ -35,6 +41,10 @@ const steps = [
 export default function AboutPage() {
   return (
     <div className="pt-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
       <section className="container-luxe grid grid-cols-1 gap-12 pb-24 md:grid-cols-[45%_55%] md:gap-16 md:pb-32">
         <ImageReveal
           src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1400&q=80"
@@ -45,21 +55,28 @@ export default function AboutPage() {
         <RevealSection className="flex flex-col gap-6">
           <p className="text-caption-label text-[var(--color-text-secondary)]">About</p>
           <h1 className="text-page-title max-w-lg">Designing spaces that feel like you.</h1>
+          <p className="text-body-copy text-[var(--color-text-secondary)]">
+            An interior design studio based in Glasgow that specialises in residential interiors
+            for private clients, developers and commercial clients in the UK and internationally.
+          </p>
 
           <div className="text-body-copy flex flex-col gap-5 text-[var(--color-text-secondary)]">
             <p>
-              Fiona founded the studio on a simple belief: that a home should feel considered,
-              never contrived — a place that reveals itself slowly rather than announcing itself
-              all at once.
+              Fiona is a mother of five whose career in design has taken her across the world. She
+              didn&rsquo;t come to the industry through design school — she learned the craft the
+              traditional way, starting from the ground up and building an understanding of a
+              room from construction through to its smallest final detail.
             </p>
             <p>
-              Every project begins with the client, not a mood board — their habits, their
-              collections, the way light moves through their rooms across a day.
+              That grounding still shapes every project the studio takes on today. Fiona has gone
+              on to lead interiors on residences in Mayfair valued in excess of £90 million,
+              alongside private homes and developments across Europe — each one approached with
+              the same hands-on care as her very first projects.
             </p>
             <p>
-              Based in Glasgow, the studio takes on residential, commercial, and hospitality
-              projects across Scotland and further afield throughout the UK, with a small team
-              involved from first sketch to final placement.
+              The success of any design project is to reflect the client&rsquo;s aspirations. A
+              design scheme is put together after a site visit, or architectural plans and
+              photographs, to then establish a design fee, budget and timescales.
             </p>
           </div>
         </RevealSection>
@@ -95,10 +112,13 @@ export default function AboutPage() {
       />
 
       <section className="container-luxe py-24 text-center md:py-32">
-        <RevealSection>
-          <p className="text-section-heading content-max mx-auto max-w-2xl">
-            &ldquo;Restraint is not the absence of luxury — it is the clearest expression of it.&rdquo;
+        <RevealSection className="content-max mx-auto flex max-w-2xl flex-col items-center gap-6">
+          <p className="text-section-heading">
+            &ldquo;My aim is to create beautiful, timeless interiors tailored to the specific
+            requirements of each individual client, taking into account location, context, brief
+            and personal taste of the client.&rdquo;
           </p>
+          <p className="text-caption-label text-[var(--color-text-secondary)]">Fiona Reid</p>
         </RevealSection>
       </section>
     </div>

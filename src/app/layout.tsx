@@ -5,6 +5,10 @@ import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import PageTransition from "@/components/layout/PageTransition";
 import ScrollProgress from "@/components/layout/ScrollProgress";
+import CookieConsent from "@/components/layout/CookieConsent";
+import MobileStickyBar from "@/components/layout/MobileStickyBar";
+import Analytics from "@/components/analytics/Analytics";
+import { business, siteUrl } from "@/lib/site";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -19,10 +23,8 @@ const dmSans = DM_Sans({
   variable: "--font-body",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://fiona-reid-interiors.vercel.app";
-
 const siteDescription =
-  "Fiona Reid Interiors is a Glasgow-based interior design studio taking on private residential, commercial, and hospitality projects across Scotland and the UK.";
+  "Fiona Reid Interiors is a Glasgow-based interior design studio taking on private residential, commercial, and hospitality projects across Scotland, London, and internationally.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -65,21 +67,32 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Fiona Reid Interiors",
+  name: business.name,
   image: `${siteUrl}/logo.png`,
   url: siteUrl,
-  telephone: "+447835708435",
-  email: "info@fionareidinteriors.co.uk",
+  telephone: business.telephone,
+  email: business.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "37 Otago Street",
-    addressLocality: "Glasgow",
-    postalCode: "G12 8JJ",
-    addressCountry: "GB",
+    streetAddress: business.address.street,
+    addressLocality: business.address.locality,
+    postalCode: business.address.postalCode,
+    addressCountry: business.address.country,
   },
-  areaServed: ["Glasgow", "Scotland", "United Kingdom"],
-  sameAs: ["https://www.instagram.com/fionareidinteriors"],
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: business.geo.latitude,
+    longitude: business.geo.longitude,
+  },
+  areaServed: business.areaServed,
+  sameAs: [business.instagram],
   description: siteDescription,
+  makesOffer: [
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Online Design Consultation" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Full-Service Residential Interior Design" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Developer Show Homes" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Interiors" } },
+  ],
 };
 
 export default function RootLayout({
@@ -89,17 +102,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
-      <body className="flex min-h-screen flex-col">
+      <body className="flex min-h-screen flex-col pb-16 md:pb-0">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <Analytics />
         <ScrollProgress />
         <Nav />
         <main className="flex-1">
           <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
+        <MobileStickyBar />
+        <CookieConsent />
       </body>
     </html>
   );

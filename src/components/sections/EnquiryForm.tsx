@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "framer-motion";
@@ -22,12 +23,12 @@ function FieldError({ message }: { message?: string }) {
 }
 
 export default function EnquiryForm() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const router = useRouter();
+  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
 
   const {
     register,
     handleSubmit,
-    getValues,
     formState: { errors },
   } = useForm<EnquiryFormValues>({
     resolver: zodResolver(enquirySchema),
@@ -42,26 +43,11 @@ export default function EnquiryForm() {
         body: JSON.stringify(values),
       });
       if (!res.ok) throw new Error("Request failed");
-      setStatus("success");
+      router.push(`/thank-you?name=${encodeURIComponent(values.name)}`);
     } catch {
       setStatus("error");
     }
   };
-
-  if (status === "success") {
-    const name = getValues("name");
-    return (
-      <motion.div variants={fadeIn} initial="hidden" animate="visible" className="py-16">
-        <p className="text-section-heading">
-          <span className="mr-2 text-[var(--color-accent-dark)]">✦</span>
-          Thank you, {name}.
-        </p>
-        <p className="text-body-copy mt-3 text-[var(--color-text-secondary)]">
-          We&rsquo;ll be in touch within 2 working days.
-        </p>
-      </motion.div>
-    );
-  }
 
   return (
     <AnimatePresence>

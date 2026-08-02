@@ -4,6 +4,7 @@ import CategoryFilter from "@/components/sections/CategoryFilter";
 import ImageReveal from "@/components/ui/ImageReveal";
 import RevealSection from "@/components/ui/RevealSection";
 import { privacyStatement, serviceCategories } from "@/lib/services";
+import { breadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Our Work",
@@ -14,9 +15,18 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbs = breadcrumbJsonLd([
+  { name: "Home", path: "/" },
+  { name: "Work", path: "/work" },
+]);
+
 export default function WorkPage() {
   return (
     <div className="pt-32">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
       <section className="container-luxe pb-12 md:pb-16">
         <RevealSection className="max-w-2xl">
           <p className="text-caption-label mb-4 text-[var(--color-text-secondary)]">Work</p>

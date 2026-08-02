@@ -9,7 +9,9 @@ import { fadeUp, stagger } from "@/lib/animations";
 
 const links = [
   { href: "/work", label: "Work" },
+  { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
+  { href: "/journal", label: "Journal" },
   { href: "/enquire", label: "Enquire" },
 ];
 
