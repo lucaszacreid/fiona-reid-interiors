@@ -228,12 +228,13 @@ export default function EnquiryForm() {
 
             <div>
               <label className="text-caption-label" htmlFor="referral">
-                How did you hear about us? (optional)
+                Heard about us? (optional)
               </label>
+              <FieldHint>Just curious — helps us understand what&rsquo;s working.</FieldHint>
               <input
                 id="referral"
                 placeholder="Instagram, a friend, Google..."
-                className={`${inputClasses} mt-2`}
+                className={inputClasses}
                 {...register("referral")}
               />
             </div>
