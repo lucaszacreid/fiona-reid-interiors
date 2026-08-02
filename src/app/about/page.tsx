@@ -47,8 +47,8 @@ export default function AboutPage() {
       />
       <section className="container-luxe grid grid-cols-1 gap-12 pb-24 md:grid-cols-[45%_55%] md:gap-16 md:pb-32">
         <ImageReveal
-          src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1400&q=80"
-          alt="Fiona Reid in the studio"
+          src="/images/IMG_8444.jpg"
+          alt="Fiona Reid, founder of Fiona Reid Interiors"
           className="aspect-3/4 w-full md:aspect-auto md:h-full"
         />
 

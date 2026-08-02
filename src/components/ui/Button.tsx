@@ -7,7 +7,7 @@ interface ButtonProps {
   href?: string;
   onClick?: () => void;
   type?: "button" | "submit";
-  variant?: "text" | "outline";
+  variant?: "solid" | "outline";
   className?: string;
   disabled?: boolean;
 }
@@ -17,44 +17,31 @@ export default function Button({
   href,
   onClick,
   type = "button",
-  variant = "text",
+  variant = "solid",
   className = "",
   disabled = false,
 }: ButtonProps) {
-  const content = (
-    <span className="group relative inline-flex items-center">
-      <span className="text-caption-label">{children}</span>
-      {variant === "text" && (
-        <span
-          aria-hidden
-          className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[var(--color-text-primary)] transition-transform duration-500 ease-[var(--ease-luxe)] group-hover:scale-x-100"
-        />
-      )}
-    </span>
-  );
+  const base =
+    "text-caption-label inline-flex items-center justify-center rounded px-8 py-3.5 text-center transition-all duration-300";
 
-  const sharedClassName = `inline-block ${
-    variant === "outline"
-      ? "border border-[var(--color-border)] px-8 py-3 transition-colors duration-300 hover:border-[var(--color-text-primary)]"
-      : ""
-  } ${className}`;
+  const styles =
+    variant === "solid"
+      ? "bg-[var(--color-accent)] text-[var(--color-text-inverse)] hover:bg-[var(--color-accent-dark)] hover:shadow-[0_6px_24px_rgba(198,166,100,0.3)]"
+      : "border border-[var(--color-border)] text-[var(--color-text-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]";
+
+  const sharedClassName = `${base} ${styles} ${disabled ? "pointer-events-none opacity-40" : ""} ${className}`;
 
   if (href) {
     return (
       <Link href={href} className={sharedClassName}>
-        {content}
+        {children}
       </Link>
     );
   }
 
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={`${sharedClassName} disabled:opacity-40`}
-    >
-      {content}
+    <button type={type} onClick={onClick} disabled={disabled} className={sharedClassName}>
+      {children}
     </button>
   );
 }

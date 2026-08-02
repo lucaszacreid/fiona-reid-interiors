@@ -34,7 +34,9 @@ export default function ThankYouContent() {
         <span className="text-2xl text-[var(--color-accent-dark)]">✦</span>
         <h1 className="text-page-title">Thank you, {name}.</h1>
         <p className="text-body-copy max-w-md text-[var(--color-text-secondary)]">
-          We&rsquo;ll be in touch within 2 working days to arrange your consultation.
+          This is the start of a conversation, not a sales pitch. Every enquiry is read
+          personally, and we&rsquo;ll be in touch within 2 working days — often sooner — to talk
+          through your project properly.
         </p>
         <div className="mt-6">
           <Button href="/">Return Home</Button>

@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "@/components/ui/Button";
+import Select from "@/components/ui/Select";
 import { fadeIn } from "@/lib/animations";
 import {
   budgets,
@@ -15,11 +16,30 @@ import {
 } from "@/lib/enquirySchema";
 
 const inputClasses =
-  "w-full border-0 border-b border-[var(--color-border)] bg-transparent py-3 text-body-copy text-[var(--color-text-primary)] outline-none transition-colors duration-300 focus:border-[var(--color-text-primary)]";
+  "w-full rounded border border-[var(--color-border)] bg-transparent px-4 py-3 text-body-copy text-[var(--color-text-primary)] outline-none transition-colors duration-300 placeholder:text-[var(--color-text-secondary)]/60 focus:border-[var(--color-accent)]";
+
+function Required() {
+  return (
+    <span aria-hidden className="text-[var(--color-accent)]">
+      {" "}
+      *
+    </span>
+  );
+}
 
 function FieldError({ message }: { message?: string }) {
   if (!message) return null;
-  return <p className="mt-1 text-[0.7rem] text-[var(--color-accent-dark)]">{message}</p>;
+  return <p className="mt-1.5 text-[0.7rem] text-[var(--color-accent-dark)]">{message}</p>;
+}
+
+function FieldHint({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="mb-2 text-[0.7rem] text-[var(--color-text-secondary)]">{children}</p>
+  );
+}
+
+function GroupLabel({ children }: { children: React.ReactNode }) {
+  return <p className="text-caption-label text-[var(--color-accent)]">{children}</p>;
 }
 
 export default function EnquiryForm() {
@@ -29,9 +49,21 @@ export default function EnquiryForm() {
   const {
     register,
     handleSubmit,
+    control,
+    reset,
     formState: { errors },
   } = useForm<EnquiryFormValues>({
     resolver: zodResolver(enquirySchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      projectType: undefined,
+      projectLocation: "",
+      budget: "",
+      description: "",
+      referral: "",
+    },
   });
 
   const onSubmit = async (values: EnquiryFormValues) => {
@@ -58,97 +90,154 @@ export default function EnquiryForm() {
         exit={{ opacity: 0 }}
         onSubmit={handleSubmit(onSubmit)}
         noValidate
-        className="flex flex-col gap-8"
+        className="flex flex-col gap-10"
       >
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div>
-            <label className="text-caption-label" htmlFor="name">
-              Name *
-            </label>
-            <input id="name" className={inputClasses} {...register("name")} />
-            <FieldError message={errors.name?.message} />
+        <div className="flex flex-col gap-6">
+          <GroupLabel>Your Details</GroupLabel>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div>
+              <label className="text-caption-label" htmlFor="name">
+                Your name
+                <Required />
+              </label>
+              <input
+                id="name"
+                placeholder="e.g. Jane Smith"
+                className={`${inputClasses} mt-2`}
+                {...register("name")}
+              />
+              <FieldError message={errors.name?.message} />
+            </div>
+
+            <div>
+              <label className="text-caption-label" htmlFor="email">
+                Your email
+                <Required />
+              </label>
+              <input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                className={`${inputClasses} mt-2`}
+                {...register("email")}
+              />
+              <FieldError message={errors.email?.message} />
+            </div>
           </div>
 
-          <div>
-            <label className="text-caption-label" htmlFor="email">
-              Email *
-            </label>
-            <input id="email" type="email" className={inputClasses} {...register("email")} />
-            <FieldError message={errors.email?.message} />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div>
+          <div className="md:max-w-[calc(50%-0.75rem)]">
             <label className="text-caption-label" htmlFor="phone">
               Phone (optional)
             </label>
-            <input id="phone" className={inputClasses} {...register("phone")} />
-          </div>
-
-          <div>
-            <label className="text-caption-label" htmlFor="projectType">
-              Project Type
-            </label>
-            <select id="projectType" className={inputClasses} defaultValue="" {...register("projectType")}>
-              <option value="" disabled>
-                Select one
-              </option>
-              {projectTypes.map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
-            <FieldError message={errors.projectType?.message} />
+            <input
+              id="phone"
+              type="tel"
+              placeholder="07000 000000"
+              className={`${inputClasses} mt-2`}
+              {...register("phone")}
+            />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <div>
-            <label className="text-caption-label" htmlFor="projectLocation">
-              Project Location *
-            </label>
-            <input id="projectLocation" className={inputClasses} {...register("projectLocation")} />
-            <FieldError message={errors.projectLocation?.message} />
-          </div>
+        <div className="flex flex-col gap-6 border-t border-[var(--color-border)] pt-10">
+          <GroupLabel>About the Project</GroupLabel>
 
-          <div>
-            <label className="text-caption-label" htmlFor="budget">
-              Approximate Budget
-            </label>
-            <select id="budget" className={inputClasses} defaultValue="" {...register("budget")}>
-              <option value="" disabled>
-                Select a range
-              </option>
-              {budgets.map((budget) => (
-                <option key={budget} value={budget}>
-                  {budget}
-                </option>
-              ))}
-            </select>
-            <FieldError message={errors.budget?.message} />
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div>
+              <label className="text-caption-label" htmlFor="projectType">
+                What kind of project is this?
+                <Required />
+              </label>
+              <div className="mt-2">
+                <Controller
+                  control={control}
+                  name="projectType"
+                  render={({ field }) => (
+                    <Select
+                      id="projectType"
+                      value={field.value ?? ""}
+                      onChange={field.onChange}
+                      options={projectTypes}
+                      placeholder="Select one"
+                      invalid={!!errors.projectType}
+                    />
+                  )}
+                />
+              </div>
+              <FieldError message={errors.projectType?.message} />
+            </div>
+
+            <div>
+              <label className="text-caption-label" htmlFor="projectLocation">
+                Where&rsquo;s the project?
+                <Required />
+              </label>
+              <input
+                id="projectLocation"
+                placeholder="e.g. Kelvinside, Glasgow"
+                className={`${inputClasses} mt-2`}
+                {...register("projectLocation")}
+              />
+              <FieldError message={errors.projectLocation?.message} />
+            </div>
           </div>
         </div>
 
-        <div>
-          <label className="text-caption-label" htmlFor="description">
-            Project Description *
-          </label>
-          <textarea
-            id="description"
-            rows={4}
-            className={inputClasses}
-            {...register("description")}
-          />
-          <FieldError message={errors.description?.message} />
-        </div>
+        <div className="flex flex-col gap-6 border-t border-[var(--color-border)] pt-10">
+          <GroupLabel>The Details</GroupLabel>
 
-        <div>
-          <label className="text-caption-label" htmlFor="referral">
-            How did you hear about us?
-          </label>
-          <input id="referral" className={inputClasses} {...register("referral")} />
+          <div>
+            <label className="text-caption-label" htmlFor="description">
+              Tell us about your project
+              <Required />
+            </label>
+            <FieldHint>
+              The more you share, the better we can prepare for our first conversation.
+            </FieldHint>
+            <textarea
+              id="description"
+              rows={4}
+              placeholder="The space, what's not working, and what you're hoping for..."
+              className={inputClasses}
+              {...register("description")}
+            />
+            <FieldError message={errors.description?.message} />
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div>
+              <label className="text-caption-label" htmlFor="budget">
+                Approximate budget (optional)
+              </label>
+              <FieldHint>This just helps us tailor ideas — entirely optional.</FieldHint>
+              <Controller
+                control={control}
+                name="budget"
+                render={({ field }) => (
+                  <Select
+                    id="budget"
+                    value={field.value ?? ""}
+                    onChange={field.onChange}
+                    options={budgets}
+                    placeholder="Select a range"
+                  />
+                )}
+              />
+            </div>
+
+            <div>
+              <label className="text-caption-label" htmlFor="referral">
+                How did you hear about us? (optional)
+              </label>
+              <input
+                id="referral"
+                placeholder="Instagram, a friend, Google..."
+                className={`${inputClasses} mt-2`}
+                {...register("referral")}
+              />
+            </div>
+          </div>
         </div>
 
         {status === "error" && (
@@ -157,8 +246,15 @@ export default function EnquiryForm() {
           </p>
         )}
 
-        <div className="flex justify-end pt-4">
-          <Button type="submit" disabled={status === "submitting"} className="w-full md:w-auto">
+        <div className="flex flex-col-reverse items-stretch gap-4 pt-4 sm:flex-row sm:items-center sm:justify-end">
+          <button
+            type="button"
+            onClick={() => reset()}
+            className="text-caption-label text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
+          >
+            Clear form
+          </button>
+          <Button type="submit" disabled={status === "submitting"} className="w-full sm:w-auto">
             {status === "submitting" ? "Sending…" : "Send Enquiry"}
           </Button>
         </div>

@@ -35,7 +35,7 @@ export async function POST(request: Request) {
       `Phone: ${data.phone || "—"}`,
       `Project type: ${data.projectType}`,
       `Project location: ${data.projectLocation}`,
-      `Budget: ${data.budget}`,
+      `Budget: ${data.budget || "—"}`,
       `How they heard about us: ${data.referral || "—"}`,
       "",
       "Description:",

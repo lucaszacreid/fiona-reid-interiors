@@ -25,9 +25,7 @@ export const enquirySchema = z.object({
     errorMap: () => ({ message: "Please select a project type." }),
   }),
   projectLocation: z.string().trim().min(1, "Please tell us where the project is."),
-  budget: z.enum(budgets, {
-    errorMap: () => ({ message: "Please select an approximate budget." }),
-  }),
+  budget: z.union([z.enum(budgets), z.literal("")]).optional(),
   description: z.string().trim().min(1, "Please tell us a little about the project."),
   referral: z.string().trim().optional().or(z.literal("")),
 });
