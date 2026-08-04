@@ -17,7 +17,7 @@ export default function PressStrip() {
               alt={press.name}
               width={press.logoWidth}
               height={press.logoHeight}
-              className="h-8 w-auto opacity-90 transition-opacity duration-300 hover:opacity-100"
+              className="h-12 w-auto opacity-90 transition-opacity duration-300 hover:opacity-100 md:h-16"
             />
           ))}
         </div>
