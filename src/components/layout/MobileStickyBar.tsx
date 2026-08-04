@@ -19,7 +19,7 @@ export default function MobileStickyBar() {
         href="/enquire"
         className="text-caption-label flex w-full items-center justify-center border border-[var(--color-accent)] py-3 text-[var(--color-accent)] transition-colors hover:bg-[var(--color-accent)] hover:text-[var(--color-text-inverse)]"
       >
-        Book a Consultation
+        Enquire Now
       </Link>
     </div>
   );

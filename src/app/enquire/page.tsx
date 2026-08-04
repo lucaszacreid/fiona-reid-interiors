@@ -6,7 +6,7 @@ import { business } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Enquire",
   description:
-    "Get in touch with Fiona Reid Interiors, Glasgow. Begin a conversation about your residential, commercial, or hospitality project.",
+    "Get in touch with Fiona Reid Interiors — working across the UK, Europe, and the United States. Begin a conversation about your residential, commercial, or hospitality project.",
   alternates: {
     canonical: "/enquire",
   },

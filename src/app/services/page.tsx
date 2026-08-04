@@ -7,7 +7,7 @@ import { breadcrumbJsonLd } from "@/lib/breadcrumbs";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Online design consultations, full-service residential interior design, developer show homes, and commercial interiors — from a Glasgow-based studio working across the UK.",
+    "Online design consultations, full-service residential interior design, developer show homes, and commercial interiors — from a Glasgow-based studio working across the UK, Europe, and the United States.",
   alternates: {
     canonical: "/services",
   },
@@ -104,7 +104,7 @@ export default function ServicesPage() {
 
             <div className="pt-2">
               <Button href="/enquire" variant="outline">
-                Enquire
+                Enquire Now
               </Button>
             </div>
           </RevealSection>
@@ -139,7 +139,7 @@ export default function ServicesPage() {
             &ldquo;The success of any design project is to reflect the client&rsquo;s
             aspirations.&rdquo;
           </p>
-          <Button href="/enquire">Begin a Conversation</Button>
+          <Button href="/enquire">Enquire Now</Button>
         </RevealSection>
       </section>
     </div>

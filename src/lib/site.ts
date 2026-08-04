@@ -19,7 +19,16 @@ export const business = {
   },
   addressDisplay: "37 Otago Street, Glasgow, G12 8JJ",
   instagram: "https://www.instagram.com/fionareidinteriors",
-  areaServed: ["Glasgow", "London", "Scotland", "United Kingdom"],
+  areaServed: [
+    "United Kingdom",
+    "Europe",
+    "United States",
+    "Glasgow",
+    "London",
+    "Paris",
+    "New York",
+    "United Arab Emirates",
+  ],
   // Approximate coordinates for 37 Otago Street, Glasgow — confirm before
   // relying on this for precise mapping.
   geo: {

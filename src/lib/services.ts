@@ -18,7 +18,7 @@ export const serviceCategories: ServiceCategory[] = [
     title: "Residential",
     summary: "Homes designed around how you actually live.",
     description: [
-      "Private homes, from London townhouses to countryside estates. We work directly with owners, and alongside their architects, on full renovations, new builds, and considered updates to existing interiors.",
+      "Private homes, from London townhouses to countryside estates, and international residences across Europe and the United States. We work directly with owners, and alongside their architects, on full renovations, new builds, and considered updates to existing interiors.",
       "Every commission begins with how a household actually lives — the way light moves through a room across a day, the objects worth building a space around, the habits a home needs to accommodate. Nothing is templated.",
       "Engagements are typically long-term and highly discreet, often running from first sketch through to the placement of the final object.",
     ],

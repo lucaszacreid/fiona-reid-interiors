@@ -35,7 +35,7 @@ export const offerings: Offering[] = [
     title: "Full-Service Residential",
     summary: "Complete interior design and interior architecture.",
     description:
-      "Large-scale residential projects requiring full interior design and interior architecture services, delivered from first sketch through to final placement. This is the deepest form of the relationship — months of close collaboration, site visits, and decisions made together, not for you. It's how the studio has come to work on homes valued well into eight figures, from Glasgow's West End to Mayfair.",
+      "Large-scale residential projects requiring full interior design and interior architecture services, delivered from first sketch through to final placement. This is the deepest form of the relationship — months of close collaboration, site visits, and decisions made together, not for you. It's how the studio has come to work on homes valued well into eight figures, from Glasgow's West End to Mayfair, Paris, New York, and the UAE.",
     whatsIncluded: [
       "Full interior design and interior architecture",
       "Site visits and on-site project management",

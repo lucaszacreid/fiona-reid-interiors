@@ -24,7 +24,7 @@ const dmSans = DM_Sans({
 });
 
 const siteDescription =
-  "Fiona Reid Interiors is a Glasgow-based interior design studio taking on private residential, commercial, and hospitality projects across Scotland, London, and internationally.";
+  "Fiona Reid Interiors is a Glasgow-based interior design studio taking on private residential, commercial, and hospitality projects across the UK, Europe, and the United States — with recent work in London, Paris, New York, and the UAE.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -36,10 +36,16 @@ export const metadata: Metadata = {
   keywords: [
     "interior designer Glasgow",
     "interior design Scotland",
+    "interior design UK",
     "luxury interior design",
+    "international interior designer",
     "residential interior designer",
-    "commercial interior design Glasgow",
+    "commercial interior design",
     "hospitality interior design",
+    "interior designer Europe",
+    "interior designer New York",
+    "interior designer Paris",
+    "interior designer UAE",
   ],
   authors: [{ name: "Fiona Reid Interiors" }],
   alternates: {

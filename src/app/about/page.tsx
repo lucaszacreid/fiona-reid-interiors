@@ -12,7 +12,7 @@ const breadcrumbs = breadcrumbJsonLd([
 export const metadata: Metadata = {
   title: "About Fiona Reid",
   description:
-    "Fiona Reid is a Glasgow-based interior designer and mother of five whose career has taken her across the world — from learning the craft on site to leading interiors on homes worth over £90 million in Mayfair and across Europe.",
+    "Fiona Reid is a Glasgow-based interior designer and mother of five whose career has taken her across the world — from learning the craft on site to leading interiors on homes worth over £90 million in Mayfair, with further work across the UK, Europe, and the United States.",
   alternates: {
     canonical: "/about",
   },
@@ -37,7 +37,8 @@ export default function AboutPage() {
           <h1 className="text-page-title max-w-lg">Designing spaces that feel like you.</h1>
           <p className="text-body-copy text-[var(--color-text-secondary)]">
             An interior design studio based in Glasgow that specialises in residential interiors
-            for private clients, developers and commercial clients in the UK and internationally.
+            for private clients, developers and commercial clients across the UK, Europe, and the
+            United States.
           </p>
 
           <div className="text-body-copy flex flex-col gap-5 text-[var(--color-text-secondary)]">
@@ -49,9 +50,10 @@ export default function AboutPage() {
             </p>
             <p>
               That grounding still shapes every project the studio takes on today. Fiona has gone
-              on to lead interiors on residences in Mayfair valued in excess of £90 million,
-              alongside private homes and developments across Europe — each one approached with
-              the same hands-on care as her very first projects.
+              on to lead interiors on residences in Mayfair valued in excess of £90 million, with
+              further projects across the UK, Europe, and the United States — including Paris,
+              New York, and the UAE — each one approached with the same hands-on care as her very
+              first projects.
             </p>
             <p>
               The success of any design project is to reflect the client&rsquo;s aspirations. A

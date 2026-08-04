@@ -65,6 +65,21 @@ duplicated markup. To add a new city:
 3. Add the new route to `src/app/sitemap.ts` and to the footer's `locations` list in
    `src/components/layout/Footer.tsx`.
 
+## Adding a press mention ("As Seen On")
+
+`src/lib/press.ts` holds one entry per publication; `src/components/sections/PressStrip.tsx`
+renders them in a gold band at the bottom of the homepage (no code changes needed to add one).
+Drop the logo file in `public/images/`, ideally a transparent PNG, then add an entry:
+
+```ts
+{
+  name: "Publication Name",
+  logo: "/images/press-publication-name.png",
+  logoWidth: 372,  // the file's real pixel dimensions, so it's never skewed
+  logoHeight: 216,
+}
+```
+
 ## Updating copy
 
 - **Home / About / Services / Enquire pages** — edit the JSX directly in `src/app/{page}/page.tsx`.
@@ -118,11 +133,6 @@ and no banner-related errors.
   with genuine client quotes (name + project description they're comfortable with); don't
   fabricate placeholder quotes. Once 2-3 are available, add a section between "Recent Work" and
   "How We Work" in `src/app/page.tsx`.
-- [ ] **"Schedule a Call" booking link** — the homepage CTA currently routes to `/enquire` like
-  every other CTA. If Fiona sets up Calendly (or similar), swap the `href` for that pathway card
-  in `src/app/page.tsx` (`ctaPathways[0].href`) for the booking URL.
-- [ ] **"As featured in" publications** — not yet built (no content exists for it). If there's a
-  list of press mentions, send them over and it's a quick addition to the homepage.
 - [ ] **Confirm the Glasgow studio coordinates** in `src/lib/site.ts` (`business.geo`) — currently
   an approximate lookup for 37 Otago Street, not verified against Google's own listing.
 

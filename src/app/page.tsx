@@ -3,6 +3,7 @@ import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import CategoryHeroes from "@/components/sections/CategoryHeroes";
 import ProcessSteps from "@/components/sections/ProcessSteps";
+import PressStrip from "@/components/sections/PressStrip";
 import RevealSection from "@/components/ui/RevealSection";
 import Button from "@/components/ui/Button";
 import {
@@ -20,7 +21,7 @@ import { locations } from "@/lib/locations";
 export const metadata: Metadata = {
   title: "Fiona Reid Interiors — Interior Designer in Glasgow",
   description:
-    "Fiona Reid Interiors is a Glasgow-based interior design studio working on private residential, commercial, and hospitality projects across Scotland and the UK.",
+    "Fiona Reid Interiors is a Glasgow-based interior design studio working on private residential, commercial, and hospitality projects across the UK, Europe, and the United States.",
   alternates: {
     canonical: "/",
   },
@@ -49,7 +50,7 @@ const ctaPathways = [
     icon: IconCalendar,
     headline: "Let's talk about your space",
     body: "A short intro call, no obligation. We'll explore if we're a good fit.",
-    cta: "Schedule a Call",
+    cta: "Enquire Now",
     href: "/enquire",
     subtext: "Usually respond within 24 hours",
   },
@@ -199,10 +200,11 @@ export default function Home() {
             <p className="text-caption-label mb-4 text-[var(--color-text-secondary)]">
               Where We Work
             </p>
-            <h2 className="text-page-title">Glasgow, London, and beyond.</h2>
+            <h2 className="text-page-title">The UK, Europe, and the United States.</h2>
             <p className="text-body-copy mt-6 text-[var(--color-text-secondary)]">
-              Based in Glasgow&rsquo;s West End, with regular projects across London, Scotland,
-              and the rest of the UK.
+              Based in Glasgow&rsquo;s West End, with projects across the UK, Europe, and the
+              United States — recent work has taken the studio to London, Paris, New York, and
+              the UAE.
             </p>
           </RevealSection>
 
@@ -222,6 +224,12 @@ export default function Home() {
               </RevealSection>
             ))}
           </div>
+
+          <RevealSection className="mt-10">
+            <p className="text-caption-label text-[var(--color-text-secondary)]">
+              Also working in Paris · New York · UAE
+            </p>
+          </RevealSection>
         </div>
       </section>
 
@@ -254,6 +262,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <PressStrip />
     </>
   );
 }

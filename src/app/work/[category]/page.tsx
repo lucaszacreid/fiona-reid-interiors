@@ -25,7 +25,7 @@ export async function generateMetadata({
   if (!service) return {};
   return {
     title: `${service.title} Interior Design`,
-    description: `${service.summary} Glasgow-based ${service.title.toLowerCase()} interior design across Scotland and the UK.`,
+    description: `${service.summary} Glasgow-based ${service.title.toLowerCase()} interior design across the UK, Europe, and the United States.`,
     alternates: {
       canonical: `/work/${service.slug}`,
     },
@@ -86,7 +86,7 @@ export default async function CategoryPage({
             </p>
           ))}
           <div className="mt-4">
-            <Button href="/enquire">Begin a Conversation</Button>
+            <Button href="/enquire">Enquire Now</Button>
           </div>
         </RevealSection>
       </section>

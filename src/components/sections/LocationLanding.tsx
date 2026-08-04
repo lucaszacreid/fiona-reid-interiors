@@ -46,7 +46,7 @@ export default function LocationLanding({ location }: { location: LocationData }
           </div>
 
           <div className="mt-2">
-            <Button href="/enquire">Book a Consultation</Button>
+            <Button href="/enquire">Enquire Now</Button>
           </div>
         </RevealSection>
       </section>
@@ -84,7 +84,7 @@ export default function LocationLanding({ location }: { location: LocationData }
             private clients, developers and commercial clients in the UK and
             internationally.&rdquo;
           </p>
-          <Button href="/enquire">Begin a Conversation</Button>
+          <Button href="/enquire">Enquire Now</Button>
         </RevealSection>
       </section>
     </div>
