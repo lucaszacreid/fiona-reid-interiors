@@ -123,8 +123,6 @@ and no banner-related errors.
   in `src/app/page.tsx` (`ctaPathways[0].href`) for the booking URL.
 - [ ] **"As featured in" publications** — not yet built (no content exists for it). If there's a
   list of press mentions, send them over and it's a quick addition to the homepage.
-- [ ] **Real landing-page hero photo** — the homepage hero still uses an Unsplash placeholder;
-  swap the `image` prop in `src/app/page.tsx`'s `<Hero>` for real studio photography.
 - [ ] **Confirm the Glasgow studio coordinates** in `src/lib/site.ts` (`business.geo`) — currently
   an approximate lookup for 37 Otago Street, not verified against Google's own listing.
 

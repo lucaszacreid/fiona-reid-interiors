@@ -77,10 +77,11 @@ export default function Home() {
   return (
     <>
       <Hero
-        image="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=2000&q=80"
-        tagline="Design built on trust, lived in by choice."
-        subheadline="Working with select clients to create interiors that feel like home."
-        ctaLabel="Begin a Conversation"
+        image="/images/hero-landing.jpg"
+        eyebrow="Bespoke Interior Design"
+        tagline={"Beautifully considered.\nEffortlessly timeless."}
+        subheadline="UK • Europe • United States"
+        ctaLabel="Enquire Now"
         ctaHref="/enquire"
       />
 
